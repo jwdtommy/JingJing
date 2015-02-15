@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.jwd.photo123.HomeActivity" >
+
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_more_vert_white_18dp"
+        android:orderInCategory="100"
+        android:showAsAction="withText|ifRoom"
+        android:visible="false"
+        android:title=""/>
+</menu>
