@@ -116,6 +116,7 @@ public class NetWorkTask extends AsyncTaskLoader<Object> {
 			data=dao.register();
 			break;
 		case NetEnity.Net_TAG_LOGIN:
+			data=dao.login();
 			break;
 		}
 		map.put("tag", tag);

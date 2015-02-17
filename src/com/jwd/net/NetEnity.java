@@ -41,6 +41,7 @@ public class NetEnity {
 		put(NET_TAG_VOTE_YES, server + "/vote_yes.php", HTTP_METHOD_POST);
 		put(NET_TAG_VOTE_NO, server + "/vote_no.php", HTTP_METHOD_POST);
 		put(Net_TAG_REGISTER, server + "/action/act_register", HTTP_METHOD_POST);
+		put(Net_TAG_LOGIN, server + "/action/act_login", HTTP_METHOD_POST);
 
 	}
 

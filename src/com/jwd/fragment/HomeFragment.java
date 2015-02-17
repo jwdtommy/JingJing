@@ -20,7 +20,7 @@ public class HomeFragment extends BaseListFragment {
 	// HomeAdapter adapter;
 	MyAdapter adapter;
 	private final int PAGE_START = 1;
-	private int curPage = 1;
+	private int curPage = 0;
 
 	private boolean isLoading;
 
@@ -152,7 +152,10 @@ public class HomeFragment extends BaseListFragment {
 	@Override
 	public void onLoadMore() {
 		// TODO Auto-generated method stub
-		loadData(flag, false, ++curPage, false);
+		Log.i("jwd", "onLoadMore curPage=" + curPage);
+		if (!isLoading) {
+			loadData(flag, false, ++curPage, false);
+		}
 	}
 
 	@Override

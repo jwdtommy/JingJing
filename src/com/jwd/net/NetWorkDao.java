@@ -12,6 +12,7 @@ import org.jsoup.select.Elements;
 import android.content.Context;
 import android.util.Log;
 
+import com.jwd.model.LoginBean;
 import com.jwd.model.MessageBean;
 import com.jwd.util.StringUtil;
 import com.jwd.util.UrlUtil;
@@ -200,7 +201,7 @@ public class NetWorkDao {
 	public boolean register() {
 		RequestParams rp = new RequestParams();
 		// reg_email=jwdtommy6%40qq.com&reg_password=123456&reg_nickname=%E5%95%8A%E5%86%AC6
-		rp.addBodyParameter("reg_email",    params[0] + "");
+		rp.addBodyParameter("reg_email", params[0] + "");
 		rp.addBodyParameter("reg_password", params[1] + "");
 		rp.addBodyParameter("reg_nickname", params[2] + "");
 		try {
@@ -222,4 +223,38 @@ public class NetWorkDao {
 		return false;
 	}
 
+	public LoginBean login() {
+		RequestParams rp = new RequestParams();
+		// reg_email=jwdtommy6%40qq.com&reg_password=123456&reg_nickname=%E5%95%8A%E5%86%AC6
+		httpUtil.configUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:22.0) Gecko/20100101 Firefox/22.0");
+		rp.addBodyParameter("referer", "http://www.caoegg.cn/");
+		rp.addBodyParameter("login_email", params[0] + "");
+		rp.addBodyParameter("login_password", params[1] + "");
+		rp.addHeader("X-Requested-With", "XMLHttpRequest");
+		rp.addHeader("Accept", "*/*");
+		rp.addHeader("Accept-Encoding", "gzip,deflate,sdch");
+		rp.addHeader("Accept-Language", "zh-CN,zh;q=0.8");
+		rp.addHeader("Origin", "http://www.caoegg.cn");
+		rp.addHeader("Referer", "http://www.caoegg.cn/login.php");
+		try {
+			ResponseStream stream = httpUtil.sendSync(httpMethod, url, rp);
+			String result;
+			try {
+				result = stream.readString();
+				Log.i("jwd", "login result=" + result);
+				if (result.contains("www.caoegg.cn")) {
+					return new LoginBean(true, params[0] + "", "");
+				}
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				return new LoginBean(false, "", "");
+			}
+		} catch (HttpException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new LoginBean(false, "", "");
+		}
+		return new LoginBean(false, "", "");
+	}
 }

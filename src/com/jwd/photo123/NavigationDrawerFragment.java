@@ -3,9 +3,10 @@ package com.jwd.photo123;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
-import android.support.v4.app.ActionBarDrawerToggle;
+//import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -20,7 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-
+import android.widget.SlidingDrawer.OnDrawerCloseListener;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation
@@ -59,8 +60,52 @@ public class NavigationDrawerFragment extends Fragment {
 	private int mCurrentSelectedPosition = 0;
 	private boolean mFromSavedInstanceState;
 	private boolean mUserLearnedDrawer;
+
 	public NavigationDrawerFragment() {
 	}
+
+	DrawerLayout.DrawerListener drawerListener = new DrawerLayout.DrawerListener() {
+
+		@Override
+		public void onDrawerClosed(View drawerView) {
+			if (!isAdded()) {
+				return;
+			}
+
+			getActivity().invalidateOptionsMenu(); // calls
+		}
+
+		@Override
+		public void onDrawerOpened(View drawerView) {
+			if (!isAdded()) {
+				return;
+			}
+			if (!mUserLearnedDrawer) {
+				// The user manually opened the drawer; store this flag to
+				// prevent auto-showing
+				// the navigation drawer automatically in the future.
+				mUserLearnedDrawer = true;
+				SharedPreferences sp = PreferenceManager
+						.getDefaultSharedPreferences(getActivity());
+				sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
+			}
+
+			getActivity().invalidateOptionsMenu(); // calls
+			// onPrepareOptionsMenu()
+		}
+
+		@Override
+		public void onDrawerSlide(View arg0, float arg1) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void onDrawerStateChanged(int arg0) {
+			// TODO Auto-generated method stub
+
+		}
+	};
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -138,6 +183,7 @@ public class NavigationDrawerFragment extends Fragment {
 		// opens
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
 				GravityCompat.START);
+		mDrawerLayout.setDrawerListener(drawerListener);
 		// set up the drawer's list view with items and click listener
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
@@ -146,51 +192,12 @@ public class NavigationDrawerFragment extends Fragment {
 				.getDrawable(R.drawable.actionbar_title));
 		// ActionBarDrawerToggle ties together the the proper interactions
 		// between the navigation drawer and the action bar app icon.
-		mDrawerToggle = new ActionBarDrawerToggle(getActivity(), /* host Activity */
-		mDrawerLayout, /* DrawerLayout object */
-		R.drawable.ic_drawer, /* nav drawer image to replace 'Up' caret */
-		R.string.navigation_drawer_open, /*
-										 * "open drawer" description for
-										 * accessibility
-										 */
-		R.string.navigation_drawer_close /*
-										 * "close drawer" description for
-										 * accessibility
-										 */
-		) {
-			@Override
-			public void onDrawerClosed(View drawerView) {
-				super.onDrawerClosed(drawerView);
-				if (!isAdded()) {
-					return;
-				}
 
-				getActivity().invalidateOptionsMenu(); // calls
-														// onPrepareOptionsMenu()
-			}
-
-			@Override
-			public void onDrawerOpened(View drawerView) {
-				super.onDrawerOpened(drawerView);
-				if (!isAdded()) {
-					return;
-				}
-
-				if (!mUserLearnedDrawer) {
-					// The user manually opened the drawer; store this flag to
-					// prevent auto-showing
-					// the navigation drawer automatically in the future.
-					mUserLearnedDrawer = true;
-					SharedPreferences sp = PreferenceManager
-							.getDefaultSharedPreferences(getActivity());
-					sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true)
-							.apply();
-				}
-
-				getActivity().invalidateOptionsMenu(); // calls
-														// onPrepareOptionsMenu()
-			}
-		};
+		mDrawerToggle = new ActionBarDrawerToggle(getActivity(), mDrawerLayout,
+				R.drawable.ic_drawer, R.drawable.ic_action_back);
+		{
+		}
+		;
 
 		// If the user hasn't 'learned' about the drawer, open it to introduce
 		// them to the drawer,

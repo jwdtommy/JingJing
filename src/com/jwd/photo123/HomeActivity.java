@@ -1,6 +1,7 @@
 package com.jwd.photo123;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -8,10 +9,18 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.jwd.base.BaseActivity;
 import com.jwd.fragment.HomeFragment;
+import com.jwd.model.LoginBean;
+import com.jwd.net.NetEnity;
+import com.jwd.util.PreferenceUtils;
+import com.jwd.util.ToastUtil;
+import com.jwd.view.LoginDialog;
 import com.umeng.update.UmengUpdateAgent;
 
 public class HomeActivity extends BaseActivity implements
@@ -31,6 +40,9 @@ public class HomeActivity extends BaseActivity implements
 	private long exitTime = 0;
 	private final long APP_EXIT_TIMER = 2000;
 
+	private LinearLayout ll_bottom_account;
+	private LoginDialog dialog_login;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,6 +59,24 @@ public class HomeActivity extends BaseActivity implements
 				(DrawerLayout) findViewById(R.id.drawer_layout));
 		// new NetWorkTask(this,Constants.NET_TAG_GET_MESSAGE,1).startLoading();
 		Log.i("jwd", "onCreate()aaa");
+		initBottomView();
+	}
+
+	private void initBottomView() {
+		ll_bottom_account = (LinearLayout) findViewById(R.id.ll_bottom_account);
+		ll_bottom_account.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (dialog_login == null) {
+					dialog_login = new LoginDialog(HomeActivity.this,
+							R.style.DialogNoTitle);
+				}
+				mNavigationDrawerFragment.closeDrawer();
+				dialog_login.show();
+			}
+		});
 	}
 
 	@Override
@@ -147,16 +177,20 @@ public class HomeActivity extends BaseActivity implements
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		// if (id == R.id.action_settings) {
-		// return true;
-		// }
+		if (id == R.id.action_settings) {
+			jumpToWriteActivity();
+			return true;
+		}
 		return super.onOptionsItemSelected(item);
 	}
 
 	@Override
 	public void bindData(int code, int tag, Object obj) {
 		// TODO Auto-generated method stub
-
+		if (tag == NetEnity.Net_TAG_LOGIN) {
+			Log.i("jwd", "doLoginResponse");
+			doLoginResponse(obj);
+		}
 	}
 
 	@Override
@@ -170,6 +204,23 @@ public class HomeActivity extends BaseActivity implements
 		// TODO Auto-generated method stub
 		super.onBackPressed();
 		this.finish();
+	}
+
+	private void doLoginResponse(Object data) {
+		dialog_login.setCanDismiss(true);
+		LoginBean loginBean = (LoginBean) data;
+		if (loginBean.isSuccess()) {
+			PreferenceUtils.saveStringPreference(PreferenceUtils.USER_NAME,
+					loginBean.getUsername(), App.getInstance()
+							.getApplicationContext());
+			ToastUtil.show("登录成功！");
+		} else {
+			ToastUtil.show("登录失败！");
+		}
+	}
+
+	private void jumpToWriteActivity() {
+		this.startActivity(new Intent(this, WriteActivity.class));
 	}
 
 }
