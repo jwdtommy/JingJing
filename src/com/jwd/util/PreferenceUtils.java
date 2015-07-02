@@ -9,6 +9,7 @@ public class PreferenceUtils {
 
 	public static final String CONFIG_FILE_NAME = "config";// config.xml
 
+	public static final String USER_IS_LOGIN = "is_login";
 	public static final String USER_NAME = "username";
 	public static final String TOKEN = "token";
 
@@ -19,6 +20,15 @@ public class PreferenceUtils {
 				Context.MODE_PRIVATE).edit();
 		editor.putString(keyName, value);
 		editor.commit();
+	}
+
+	public static boolean isUserLogin(Context context) {
+
+		return getBoolPreference(USER_IS_LOGIN, context);
+	}
+
+	public static String getUserName(Context context) {
+		return getStringPreference(USER_NAME, "", context);
 	}
 
 	/**

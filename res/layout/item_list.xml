@@ -22,6 +22,13 @@
             android:textColor="@color/primary_text_default_material_light"
             android:textSize="16sp" />
 
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/iv_image"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+             />
+
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

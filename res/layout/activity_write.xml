@@ -7,9 +7,10 @@
     android:background="@color/white" >
 
     <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/ed_username"
+        android:id="@+id/ed_content"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
+        android:focusable="true"
         android:gravity="top|left"
         android:hint=""
         android:padding="8dp"
@@ -23,5 +24,14 @@
         app:maxCharacters="150"
         app:primaryColor="@color/transparent"
         app:singleLineEllipsis="false" />
+
+    <com.jwd.view.TagGroup
+        android:id="@+id/tag_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:focusable="false"
+        app:isAppendMode="true" />
 
 </RelativeLayout>

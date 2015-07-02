@@ -45,5 +45,11 @@
     <string name="ok">OK</string>
     <string name="cancelled">Cancelled</string>
     <string name="permission_not_granted">Unable to perform selected action because permissions were not granted.</string>
+    <string name="add_tag">Add Tag</string>
+    <string name="title_activity_secondary">添加标签</string>
+    <string name="add_tags">添加标签</string>
+    <string name="tags_default">标签(默认)</string>
+    <string name="tags_small">标签(小号)</string>
+    <string name="tags_large">标签(大号)</string>
 
 </resources>

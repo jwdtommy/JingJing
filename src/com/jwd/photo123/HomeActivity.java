@@ -3,6 +3,7 @@ package com.jwd.photo123;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -12,14 +13,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jwd.base.BaseActivity;
-import com.jwd.fragment.HomeFragment;
-import com.jwd.model.LoginBean;
-import com.jwd.net.NetEnity;
-import com.jwd.util.PreferenceUtils;
-import com.jwd.util.ToastUtil;
+import com.jwd.fragment.NewsFragment;
 import com.jwd.view.LoginDialog;
 import com.umeng.update.UmengUpdateAgent;
 
@@ -41,6 +39,7 @@ public class HomeActivity extends BaseActivity implements
 	private final long APP_EXIT_TIMER = 2000;
 
 	private LinearLayout ll_bottom_account;
+	private TextView tv_account;
 	private LoginDialog dialog_login;
 
 	@Override
@@ -58,8 +57,14 @@ public class HomeActivity extends BaseActivity implements
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
 				(DrawerLayout) findViewById(R.id.drawer_layout));
 		// new NetWorkTask(this,Constants.NET_TAG_GET_MESSAGE,1).startLoading();
-		Log.i("jwd", "onCreate()aaa");
 		initBottomView();
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		Debug.stopMethodTracing();
 	}
 
 	private void initBottomView() {
@@ -77,6 +82,7 @@ public class HomeActivity extends BaseActivity implements
 				dialog_login.show();
 			}
 		});
+		tv_account = (TextView) findViewById(R.id.tv_account);
 	}
 
 	@Override
@@ -89,7 +95,7 @@ public class HomeActivity extends BaseActivity implements
 
 	public void updateFragment(int position) {
 		FragmentManager fragmentManager = getSupportFragmentManager();
-		HomeFragment frag = new HomeFragment(position);
+		NewsFragment frag = new NewsFragment(position);
 		fragmentManager.beginTransaction().replace(R.id.container, frag)
 				.commit();
 		changeTitle(position);
@@ -187,10 +193,6 @@ public class HomeActivity extends BaseActivity implements
 	@Override
 	public void bindData(int code, int tag, Object obj) {
 		// TODO Auto-generated method stub
-		if (tag == NetEnity.Net_TAG_LOGIN) {
-			Log.i("jwd", "doLoginResponse");
-			doLoginResponse(obj);
-		}
 	}
 
 	@Override
@@ -205,20 +207,6 @@ public class HomeActivity extends BaseActivity implements
 		super.onBackPressed();
 		this.finish();
 	}
-
-	private void doLoginResponse(Object data) {
-		dialog_login.setCanDismiss(true);
-		LoginBean loginBean = (LoginBean) data;
-		if (loginBean.isSuccess()) {
-			PreferenceUtils.saveStringPreference(PreferenceUtils.USER_NAME,
-					loginBean.getUsername(), App.getInstance()
-							.getApplicationContext());
-			ToastUtil.show("登录成功！");
-		} else {
-			ToastUtil.show("登录失败！");
-		}
-	}
-
 	private void jumpToWriteActivity() {
 		this.startActivity(new Intent(this, WriteActivity.class));
 	}

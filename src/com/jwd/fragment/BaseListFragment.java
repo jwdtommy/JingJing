@@ -43,7 +43,6 @@ public abstract class BaseListFragment extends BaseFragment {
 			int lastVisibleItem = ((LinearLayoutManager) mLayoutManager)
 					.findLastVisibleItemPosition();
 			int totalItemCount = mLayoutManager.getItemCount();
-			// dy>0 ��ʾ���»���
 			if (lastVisibleItem >= totalItemCount - 2 && dy > 0) {
 				onLoadMore();
 			}

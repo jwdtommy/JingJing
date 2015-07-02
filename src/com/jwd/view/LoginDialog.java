@@ -2,7 +2,6 @@ package com.jwd.view;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -10,12 +9,7 @@ import android.view.View;
 import com.gc.materialdesign.views.ButtonFlat;
 import com.jwd.base.BaseActivity;
 import com.jwd.base.IBindData;
-import com.jwd.model.LoginBean;
-import com.jwd.net.NetEnity;
-import com.jwd.net.NetWorkTask;
-import com.jwd.photo123.App;
 import com.jwd.photo123.R;
-import com.jwd.util.PreferenceUtils;
 import com.jwd.util.ToastUtil;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
@@ -67,15 +61,24 @@ public class LoginDialog extends Dialog implements IBindData {
 				if (ed_password.getText() != null) {
 					password = ed_password.getText().toString().trim();
 				}
-				if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
-					username = "jwdtommy1@qq.com";
-					password = "123456";
+
+				if (TextUtils.isEmpty(username)) {
+					ToastUtil.show("请输入用户名");
+					return;
 				}
+				if (TextUtils.isEmpty(password)) {
+					ToastUtil.show("请输入密码");
+					return;
+				}
+
+				// if (TextUtils.isEmpty(username) ||
+				// TextUtils.isEmpty(password)) {
+				// username = "jwdtommy1@qq.com";
+				// password = "123456";
+				// }
 
 				if (checkUsername(username) && checkPassword(password)) {
 					setCanDismiss(false);
-					new NetWorkTask(mContext, NetEnity.Net_TAG_LOGIN, username,
-							password).startLoading();
 				}
 			}
 		});

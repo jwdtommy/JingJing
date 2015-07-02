@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="8dp"
-                android:text="注册/登录"
+                android:text="登录"
                 android:textColor="@color/white" />
         </LinearLayout>
 

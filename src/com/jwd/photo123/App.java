@@ -1,22 +1,24 @@
 package com.jwd.photo123;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import com.jwd.model.MessageBean;
-
 import android.app.Application;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+import com.jwd.util.BFImageCache;
+import com.jwd.util.MLog;
 
 public class App extends Application {
 
 	public static App instance = null;
-	public static HashMap<String, ArrayList<MessageBean>> mapMessage = new HashMap<String, ArrayList<MessageBean>>();
-
+	public static RequestQueue queue;
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub
 		super.onCreate();
 		instance = this;
+		queue = Volley.newRequestQueue(this);
+		BFImageCache.getInstance().initilize(this);
+		MLog.i("APP onCreate()..");
 	}
 
 	public static App getInstance() {
@@ -26,23 +28,4 @@ public class App extends Application {
 		}
 		return instance;
 	}
-
-	public void putMessages(String key, ArrayList<MessageBean> messages) {
-		if (mapMessage == null) {
-			return;
-		}
-		if (mapMessage.containsKey(key)) {
-			mapMessage.remove(key);
-		}
-		mapMessage.put(key, messages);
-	}
-
-	public ArrayList<MessageBean> getMessages(String key) {
-		if (mapMessage == null) {
-			return null;
-		}
-		ArrayList<MessageBean> messages = mapMessage.get(key);
-		return messages;
-	}
-
 }

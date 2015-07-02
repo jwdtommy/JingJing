@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 /**
  * @author jiangweidong
  */
-public abstract class BaseFragment extends Fragment implements IBindData
+public abstract class BaseFragment extends Fragment
 {
 	protected Activity mActivity;
 	protected LayoutInflater mInflater;
