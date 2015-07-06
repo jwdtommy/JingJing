@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
-import com.jwd.photo123.R;
-import com.jwd.view.*;
+import com.jwd.jingjing.view.*;
+import com.jwd.jingjing.R;
 
 public class SecondaryActivity extends ActionBarActivity {
 	private TagGroup mTagGroup;

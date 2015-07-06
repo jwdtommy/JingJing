@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">草蛋</string>
+    <string name="app_name">静静是谁</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example actions</string>
@@ -51,5 +51,7 @@
     <string name="tags_default">标签(默认)</string>
     <string name="tags_small">标签(小号)</string>
     <string name="tags_large">标签(大号)</string>
+    <string name="news_default_description">心烦意乱的时候你总想静静，可静静到底是谁？APP--“静静是谁”</string>
+    <string name="from_share">分享静静是谁:</string>
 
 </resources>

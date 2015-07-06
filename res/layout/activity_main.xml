@@ -15,7 +15,7 @@
         android:text="@string/tags_default"
         android:textSize="20sp" />
 
-    <com.jwd.view.TagGroup
+    <com.jwd.jingjing.view.TagGroup
         android:id="@+id/tag_group"
         style="@style/TagGroup"
         android:layout_marginTop="10dp" />
@@ -36,7 +36,7 @@
         android:text="@string/tags_small"
         android:textSize="18sp" />
 
-    <com.jwd.view.TagGroup
+    <com.jwd.jingjing.view.TagGroup
         android:id="@+id/tag_group_small"
         style="@style/TagGroup.Small"
         android:layout_marginTop="10dp" />
@@ -48,7 +48,7 @@
         android:text="@string/tags_large"
         android:textSize="22sp" />
 
-    <com.jwd.view.TagGroup
+    <com.jwd.jingjing.view.TagGroup
         android:id="@+id/tag_group_large"
         style="@style/TagGroup.Large"
         android:layout_marginTop="10dp" />

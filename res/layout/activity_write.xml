@@ -25,7 +25,7 @@
         app:primaryColor="@color/transparent"
         app:singleLineEllipsis="false" />
 
-    <com.jwd.view.TagGroup
+    <com.jwd.jingjing.view.TagGroup
         android:id="@+id/tag_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

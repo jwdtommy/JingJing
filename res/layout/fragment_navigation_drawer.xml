@@ -12,7 +12,7 @@
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
-        tools:context="com.jwd.photo123.NavigationDrawerFragment" />
+        tools:context="com.jwd.jingjing.photo123.NavigationDrawerFragment" />
 
     <RelativeLayout
         android:id="@+id/rl_bottom"

@@ -11,7 +11,7 @@
         android:background="@color/white"
         android:orientation="vertical" >
 
-        <com.jwd.view.JustifyTextView
+        <com.jwd.jingjing.view.JustifyTextView
             android:id="@+id/tv_content"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

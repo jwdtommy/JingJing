@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jwd.photo123"
+    package="com.jwd.jingjing"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -21,7 +21,7 @@
         android:targetSdkVersion="19" />
 
     <application
-        android:name="com.jwd.photo123.App"
+        android:name="com.jwd.jingjing.photo123.App"
         android:allowBackup="true"
         android:icon="@drawable/cao_egg_logo"
         android:label="@string/app_name"
@@ -40,20 +40,21 @@
                 android:value="me.gujun.android.taggroup.demo.MainActivity" />
         </activity>
         <activity
-            android:name="com.jwd.photo123.HomeActivity"
+            android:name="com.jwd.jingjing.photo123.HomeActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.jwd.photo123.WriteActivity"
+            android:name="com.jwd.jingjing.photo123.WriteActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustResize" >
         </activity>
         <activity
-            android:name="com.jwd.photo123.WelcomeActivity"
+            android:name="com.jwd.jingjing.photo123.WelcomeActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Holo.NoActionBar" >
         </activity>
@@ -65,13 +66,6 @@
             android:name="UMENG_CHANNEL"
             android:value="android_market" />
 
-        <activity
-            android:name="com.umeng.socialize.view.ShareActivity"
-            android:configChanges="orientation|keyboard"
-            android:launchMode="singleTask"
-            android:noHistory="true"
-            android:theme="@style/Theme.UMDialog"
-            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".yxapi.YXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -115,6 +109,39 @@
             android:name="com.umeng.update.UpdateDialogActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" >
         </activity>
+
+        <!-- ShareSDK -->
+        <activity
+            android:name="cn.sharesdk.framework.ShareSDKUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+            <intent-filter>
+                <data android:scheme="tencent100857255" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 微信分享回调 -->
+        <activity
+            android:name="com.peopledailychina.activity.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- 易信分享回调 -->
+        <activity
+            android:name="com.peopledailychina.activity.yxapi.YXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 
     <uses-permission android:name="android.permission.GET_TASKS" />

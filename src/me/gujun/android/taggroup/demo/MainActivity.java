@@ -6,8 +6,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.jwd.photo123.R;
-import com.jwd.view.TagGroup;
+import com.jwd.jingjing.view.TagGroup;
+import com.jwd.jingjing.R;
 import me.gujun.android.taggroup.demo.db.TagsManager;
 
 public class MainActivity extends ActionBarActivity {
