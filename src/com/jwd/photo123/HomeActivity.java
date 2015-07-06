@@ -207,6 +207,7 @@ public class HomeActivity extends BaseActivity implements
 		super.onBackPressed();
 		this.finish();
 	}
+
 	private void jumpToWriteActivity() {
 		this.startActivity(new Intent(this, WriteActivity.class));
 	}

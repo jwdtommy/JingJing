@@ -9,6 +9,9 @@ import com.jwd.util.FileUtils;
 
 public class JokeListManager extends BaseManager {
 
+	public static final int TAG_JOKERLIST_REFRESH = 0X1;
+	public static final int TAG_JOKERLIST_ADD = 0X2;
+
 	INewsListView iNewsListView;
 	private ArrayList<NewsItem> newsItems;
 
@@ -31,28 +34,45 @@ public class JokeListManager extends BaseManager {
 	}
 
 	@Override
-	public void onWebFinish(String result) {
+	public void onWebFinish(int tag, String result) {
 		// TODO Auto-generated method stub
 		newsItems = ParseManager.parseNewsItems(result);
-		iNewsListView.showList(newsItems);
+
+		switch (tag) {
+		case TAG_JOKERLIST_REFRESH:
+			iNewsListView.reFreshList(newsItems);
+			iNewsListView.hideLoadingView();
+			break;
+		case TAG_JOKERLIST_ADD:
+			iNewsListView.addList(newsItems);
+			iNewsListView.hideLoadingView();
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
+	public void onWebError(int tag, WebError errorCode) {
+		// TODO Auto-generated method stub
 		iNewsListView.hideLoadingView();
 	}
 
 	@Override
-	public void onWebError(WebError errorCode) {
-		// TODO Auto-generated method stub
-		iNewsListView.hideLoadingView();
-	}
-
-	@Override
-	public void onFileFinish(String result) {
+	public void onFileFinish(int tag, String result) {
 		// TODO Auto-generated method stub
 		newsItems = ParseManager.parseNewsItems(result);
-		iNewsListView.showList(newsItems);
+		switch (tag) {
+		case TAG_JOKERLIST_REFRESH:
+			iNewsListView.reFreshList(newsItems);
+			break;
+		default:
+			break;
+		}
 	}
 
 	@Override
-	public void onFileError(FileError errorCode) {
+	public void onFileError(int tag, FileError errorCode) {
 		// TODO Auto-generated method stub
 	}
 

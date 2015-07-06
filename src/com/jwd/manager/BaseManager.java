@@ -27,12 +27,12 @@ public abstract class BaseManager implements ImplManager {
 		url = configUrl();
 	}
 
-	private void loadFile() {
+	private void loadFile(int tag) {
 		try {
 			json = (String) FileUtils.unserializeObject(filePath);
-			onFileFinish(json);
+			onFileFinish(tag,json);
 		} catch (Exception e) {
-			onFileError(FileError.NO_DATA);
+			onFileError(tag,FileError.NO_DATA);
 		}
 	}
 
@@ -43,7 +43,7 @@ public abstract class BaseManager implements ImplManager {
 		}
 	}
 
-	public void loadWeb(final HashMap<String, String> params) {
+	public void loadWeb(final int tag,final HashMap<String, String> params) {
 		try {
 			if (httpMethod == Method.GET) {
 				HttpConnectionUtils.setUrlParameter(url, params);
@@ -54,13 +54,13 @@ public abstract class BaseManager implements ImplManager {
 						@Override
 						public void onResponse(String response) {
 							saveFile(response);
-							onWebFinish(response);
+							onWebFinish(tag,response);
 						}
 					}, new Response.ErrorListener() {
 						@Override
 						public void onErrorResponse(VolleyError error) {
 							// TODO Auto-generated method stub
-							onWebError(WebError.CONNECT_FAIL);
+							onWebError(tag,WebError.CONNECT_FAIL);
 						}
 
 					}) {
@@ -77,12 +77,12 @@ public abstract class BaseManager implements ImplManager {
 			App.queue.add(request);
 		} catch (Exception e) {
 			// TODO: handle exception
-			onWebError(WebError.CONNECT_FAIL);
+			onWebError(tag,WebError.CONNECT_FAIL);
 		}
 	}
 
-	public void excute(HashMap<String, String> params) {
-		loadFile();
-		loadWeb(params);
+	public void excute(int tag,HashMap<String, String> params) {
+		loadFile(tag);
+		loadWeb(tag,params);
 	}
 }

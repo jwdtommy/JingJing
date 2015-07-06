@@ -4,6 +4,7 @@ import com.umeng.analytics.MobclickAgent;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
@@ -24,14 +25,14 @@ public abstract class BaseActivity extends FragmentActivity implements
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		MobclickAgent.onResume(this); // 统计时长
+		MobclickAgent.onResume(this); // 统锟斤拷时锟斤拷
 	}
 
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		MobclickAgent.onPause(this); // 统计时长
+		MobclickAgent.onPause(this); // 统锟斤拷时锟斤拷
 	}
 
 	public UMSocialService getSocialService() {

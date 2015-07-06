@@ -14,13 +14,13 @@ public interface ImplManager {
 
 	public String configUrl();//
 
-	public void onWebFinish(String result);//
+	public void onWebFinish(int tag,String result);//
 
-	public void onWebError(WebError errorCode);//
+	public void onWebError(int tag,WebError errorCode);//
 
-	public void onFileFinish(String result);//
+	public void onFileFinish(int tag,String result);//
 
-	public void onFileError(FileError errorCode);//
+	public void onFileError(int tag,FileError errorCode);//
 
 	public void onParse(String json);//
 
