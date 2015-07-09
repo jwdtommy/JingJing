@@ -1,9 +1,10 @@
-package com.jwd.jingjing.photo123;
+package com.jwd.jingjing.activity;
 
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Debug;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jwd.jingjing.base.BaseActivity;
+import com.jwd.jingjing.fragment.GirlsFragment;
 import com.jwd.jingjing.fragment.NewsFragment;
 import com.jwd.jingjing.view.LoginDialog;
 import com.jwd.jingjing.R;
@@ -47,7 +49,8 @@ public class HomeActivity extends BaseActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		mTitle = "最新";
+		getActionBar().setDisplayShowHomeEnabled(false);
+		mTitle = getString(R.string.menu_item_0);
 		UmengUpdateAgent.setUpdateOnlyWifi(true);
 		UmengUpdateAgent.update(this);
 		Log.i("jwd", "onCreate()");
@@ -96,44 +99,41 @@ public class HomeActivity extends BaseActivity implements
 
 	public void updateFragment(int position) {
 		FragmentManager fragmentManager = getSupportFragmentManager();
-		NewsFragment frag = new NewsFragment(position);
-		fragmentManager.beginTransaction().replace(R.id.container, frag)
-				.commit();
-		changeTitle(position);
+		Fragment frag = null;
+		switch (position) {
+		case 0:
+			frag = new NewsFragment();
+			break;
+		case 1:
+			frag = new GirlsFragment();
+			break;
+		case 2:
+			break;
+		default:
+			break;
+		}
+		if (frag != null) {
+			fragmentManager.beginTransaction().replace(R.id.container, frag)
+					.commit();
+			changeTitle(position);
+		}
 	}
 
 	public void changeTitle(int position) {
 		switch (position) {
 		case 0:
-			mTitle = "最新";
+			mTitle = this.getString(R.string.menu_item_0);
 			break;
 		case 1:
-			mTitle = "最衰";
+			mTitle = this.getString(R.string.menu_item_1);
 			break;
 		case 2:
-			mTitle = "最该";
+			mTitle = this.getString(R.string.menu_item_2);
 			break;
 		default:
 			break;
 		}
 		getActionBar().setTitle(mTitle + "");
-	}
-
-	public void onSectionAttached(int number) {
-		switch (number) {
-		// case 1:
-		// mTitle = getString(R.string.menu_item_remen);
-		// break;
-		case 1:
-			mTitle = getString(R.string.menu_item_zuixin);
-			break;
-		case 2:
-			mTitle = getString(R.string.menu_item_zuishai);
-			break;
-		case 3:
-			mTitle = getString(R.string.menu_item_zuigai);
-			break;
-		}
 	}
 
 	public void restoreActionBar() {
@@ -167,7 +167,7 @@ public class HomeActivity extends BaseActivity implements
 				return true;
 			}
 			if ((System.currentTimeMillis() - exitTime) > APP_EXIT_TIMER) {
-				Toast.makeText(getApplicationContext(), "再按一次退出草蛋",
+				Toast.makeText(getApplicationContext(), "再按一次静静就不理你了，哼~",
 						Toast.LENGTH_SHORT).show();
 				exitTime = System.currentTimeMillis();
 			} else {

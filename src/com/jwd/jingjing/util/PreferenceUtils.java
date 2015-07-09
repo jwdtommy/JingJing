@@ -3,7 +3,7 @@ package com.jwd.jingjing.util;
 import android.content.Context;
 import android.content.SharedPreferences.Editor;
 
-import com.jwd.jingjing.photo123.App;
+import com.jwd.jingjing.activity.App;
 
 public class PreferenceUtils {
 

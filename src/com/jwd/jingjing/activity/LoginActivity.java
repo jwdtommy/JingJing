@@ -1,4 +1,4 @@
-package com.jwd.jingjing.photo123;
+package com.jwd.jingjing.activity;
 
 import com.jwd.jingjing.base.IBindData;
 import com.jwd.jingjing.R;

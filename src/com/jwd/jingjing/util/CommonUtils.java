@@ -7,7 +7,7 @@ import java.net.SocketException;
 import java.util.Enumeration;
 import java.util.List;
 
-import com.jwd.jingjing.photo123.App;
+import com.jwd.jingjing.activity.App;
 
 import android.app.Activity;
 import android.content.Context;

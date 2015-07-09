@@ -2,20 +2,20 @@ package com.jwd.jingjing.fragment;
 
 import java.util.ArrayList;
 
-import com.jwd.jingjing.adapter.NewsListAdapter;
-import com.jwd.jingjing.manager.JokeListManager;
-import com.jwd.jingjing.model.NewsItem;
-import com.jwd.jingjing.presenter.INewsListView;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.jwd.jingjing.adapter.NewsListAdapter;
+import com.jwd.jingjing.manager.NewsListManager;
+import com.jwd.jingjing.model.NewsItem;
+import com.jwd.jingjing.presenter.INewsListView;
+
 public class NewsFragment extends BaseListFragment implements INewsListView {
-	private JokeListManager manager;
+	private NewsListManager manager;
 	private NewsListAdapter adapter;
 
-	public NewsFragment(int position) {
+	public NewsFragment() {
 
 	}
 
@@ -24,20 +24,20 @@ public class NewsFragment extends BaseListFragment implements INewsListView {
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		adapter = new NewsListAdapter(this);
-		manager = new JokeListManager(this);
-		manager.excute(JokeListManager.TAG_JOKERLIST_REFRESH, null);
+		manager = new NewsListManager(this);
+		manager.excute(NewsListManager.TAG_NEWSLIST_REFRESH, null);
 	}
 
 	@Override
 	public void onLoadMore() {
 		// TODO Auto-generated method stub
-		manager.loadWeb(JokeListManager.TAG_JOKERLIST_ADD, null);
+		manager.loadWeb(NewsListManager.TAG_NEWSLIST_ADD, null);
 	}
 
 	@Override
 	public void onReFresh() {
 		// TODO Auto-generated method stub
-		manager.loadWeb(JokeListManager.TAG_JOKERLIST_REFRESH, null);
+		manager.loadWeb(NewsListManager.TAG_NEWSLIST_REFRESH, null);
 	}
 
 	@Override

@@ -7,15 +7,15 @@ import com.jwd.jingjing.model.NewsItem;
 import com.jwd.jingjing.presenter.INewsListView;
 import com.jwd.jingjing.util.FileUtils;
 
-public class JokeListManager extends BaseManager {
+public class NewsListManager extends BaseManager {
 
-	public static final int TAG_JOKERLIST_REFRESH = 0X1;
-	public static final int TAG_JOKERLIST_ADD = 0X2;
+	public static final int TAG_NEWSLIST_REFRESH = 0X1;
+	public static final int TAG_NEWSLIST_ADD = 0X2;
 
 	INewsListView iNewsListView;
 	private ArrayList<NewsItem> newsItems;
 
-	public JokeListManager(INewsListView iPresenterView) {
+	public NewsListManager(INewsListView iPresenterView) {
 		super(iPresenterView);
 		this.iNewsListView = iPresenterView;
 		// TODO Auto-generated constructor stub
@@ -39,11 +39,11 @@ public class JokeListManager extends BaseManager {
 		newsItems = ParseManager.parseNewsItems(result);
 
 		switch (tag) {
-		case TAG_JOKERLIST_REFRESH:
+		case TAG_NEWSLIST_REFRESH:
 			iNewsListView.reFreshList(newsItems);
 			iNewsListView.hideLoadingView();
 			break;
-		case TAG_JOKERLIST_ADD:
+		case TAG_NEWSLIST_ADD:
 			iNewsListView.addList(newsItems);
 			iNewsListView.hideLoadingView();
 			break;
@@ -63,7 +63,7 @@ public class JokeListManager extends BaseManager {
 		// TODO Auto-generated method stub
 		newsItems = ParseManager.parseNewsItems(result);
 		switch (tag) {
-		case TAG_JOKERLIST_REFRESH:
+		case TAG_NEWSLIST_REFRESH:
 			iNewsListView.reFreshList(newsItems);
 			break;
 		default:

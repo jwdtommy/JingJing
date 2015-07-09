@@ -7,7 +7,7 @@ import java.util.Calendar;
 import android.content.Context;
 import android.os.Environment;
 
-import com.jwd.jingjing.photo123.App;
+import com.jwd.jingjing.activity.App;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package com.jwd.jingjing.photo123;
+package com.jwd.jingjing.activity;
 
 import com.jwd.jingjing.R;
 
@@ -155,10 +155,8 @@ public class NavigationDrawerFragment extends Fragment {
 		mDrawerListView.setAdapter(new ArrayAdapter<String>(getActionBar()
 				.getThemedContext(),
 				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text1, new String[] {
-						getString(R.string.menu_item_zuixin),
-						getString(R.string.menu_item_zuishai),
-						getString(R.string.menu_item_zuigai) }));
+				android.R.id.text1,
+				new String[] { getString(R.string.menu_item_0) }));
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 		return mLayoutParent;
 	}
@@ -204,9 +202,9 @@ public class NavigationDrawerFragment extends Fragment {
 		// If the user hasn't 'learned' about the drawer, open it to introduce
 		// them to the drawer,
 		// per the navigation drawer design guidelines.
-//		if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
-//			mDrawerLayout.openDrawer(mFragmentContainerView);
-//		}
+		// if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
+		// mDrawerLayout.openDrawer(mFragmentContainerView);
+		// }
 
 		// Defer code dependent on restoration of previous instance state.
 		mDrawerLayout.post(new Runnable() {

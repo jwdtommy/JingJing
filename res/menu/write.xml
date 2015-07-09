@@ -8,6 +8,6 @@
         android:orderInCategory="100"
         android:showAsAction="withText|ifRoom"
         android:title=""
-        android:visible="true"/>
+        android:visible="false"/>
 
 </menu>

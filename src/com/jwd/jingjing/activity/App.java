@@ -1,4 +1,4 @@
-package com.jwd.jingjing.photo123;
+package com.jwd.jingjing.activity;
 
 import android.app.Application;
 import android.graphics.Bitmap;
@@ -16,6 +16,17 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
+/**
+ * @INFO
+ * 谁是静静是集，美女图片、内涵图片，内涵段子、无节操图片于一体的幽默类网站，在这里可以看到极具搞笑的东西。
+ * “美女诱惑”让你瞬间爆棚， 特含“醉图”极度搞笑，锻炼腹肌力量，激发排泄效率。 无节操、无下限、爆笑内容，有效清理体内毒素，帮助维护高端笑点，适合全家每天使用。
+ * 纯天然无污染优质原创内容，丰富槽点，给你最刺激的感官享受! 富含不明糟糕物，使用后精神柔滑不干燥，倍感舒爽。
+
+	@TAG
+
+ * @author jiangweidong
+ * 
+ */
 public class App extends Application {
 
 	public static App instance = null;

@@ -27,8 +27,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:scaleType="centerCrop"
-             />
+            android:scaleType="centerCrop" />
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -50,7 +49,8 @@
                 android:paddingTop="5dp"
                 android:text="我承认你这日子够草蛋"
                 android:textColor="#40c4ff"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_yesNum"
@@ -63,7 +63,8 @@
                 android:singleLine="true"
                 android:text="(10)"
                 android:textColor="#bdbdbd"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv2"
@@ -75,7 +76,8 @@
                 android:paddingTop="5dp"
                 android:text="你丫活该"
                 android:textColor="#40c4ff"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_noNum"
@@ -88,7 +90,8 @@
                 android:singleLine="true"
                 android:text="(100)"
                 android:textColor="#bdbdbd"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:visibility="gone" />
 
             <ImageButton
                 android:id="@+id/btn_share"

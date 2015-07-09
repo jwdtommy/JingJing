@@ -2,6 +2,8 @@ package com.jwd.jingjing.model;
 
 import java.io.Serializable;
 
+import android.os.Handler;
+
 public class NewsItem implements Serializable {
 
 	/**

@@ -1,4 +1,4 @@
-package com.jwd.jingjing.photo123;
+package com.jwd.jingjing.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

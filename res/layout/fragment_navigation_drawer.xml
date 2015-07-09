@@ -12,13 +12,14 @@
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
-        tools:context="com.jwd.jingjing.photo123.NavigationDrawerFragment" />
+        tools:context="com.jwd.jingjing.activity.NavigationDrawerFragment" />
 
     <RelativeLayout
         android:id="@+id/rl_bottom"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" >
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" >
 
         <LinearLayout
             android:id="@+id/ll_bottom_account"

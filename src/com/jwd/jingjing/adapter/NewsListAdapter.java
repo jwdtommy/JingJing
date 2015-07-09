@@ -15,10 +15,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jwd.jingjing.activity.App;
 import com.jwd.jingjing.base.BaseActivity;
 import com.jwd.jingjing.fragment.BaseListFragment;
 import com.jwd.jingjing.model.NewsItem;
-import com.jwd.jingjing.photo123.App;
 import com.jwd.jingjing.util.BFImageCache;
 import com.jwd.jingjing.util.MLog;
 import com.jwd.jingjing.view.ShareDialog;
@@ -94,7 +94,7 @@ public class NewsListAdapter extends
 	public ViewHolder onCreateViewHolder(ViewGroup arg0, int arg1) {
 		// TODO Auto-generated method stub
 		Log.i("jwd", "onCreateViewHolder()");
-		View layout = LayoutInflater.from(context).inflate(R.layout.item_list,
+		View layout = LayoutInflater.from(context).inflate(R.layout.item_news,
 				null);
 		return new ViewHolder(layout);
 	}

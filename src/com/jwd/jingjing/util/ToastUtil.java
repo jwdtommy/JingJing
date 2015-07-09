@@ -1,6 +1,6 @@
 package com.jwd.jingjing.util;
 
-import com.jwd.jingjing.photo123.App;
+import com.jwd.jingjing.activity.App;
 
 import android.widget.Toast;
 

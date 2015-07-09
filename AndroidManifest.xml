@@ -17,13 +17,12 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="19" />
+        android:minSdkVersion="11"
+        android:targetSdkVersion="21" />
 
     <application
-        android:name="com.jwd.jingjing.photo123.App"
-        android:allowBackup="true"
-        android:icon="@drawable/cao_egg_logo"
+        android:name="com.jwd.jingjing.activity.App"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -40,7 +39,7 @@
                 android:value="me.gujun.android.taggroup.demo.MainActivity" />
         </activity>
         <activity
-            android:name="com.jwd.jingjing.photo123.HomeActivity"
+            android:name="com.jwd.jingjing.activity.HomeActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,12 +48,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.jwd.jingjing.photo123.WriteActivity"
+            android:name="com.jwd.jingjing.activity.WriteActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustResize" >
         </activity>
         <activity
-            android:name="com.jwd.jingjing.photo123.WelcomeActivity"
+            android:name="com.jwd.jingjing.activity.WelcomeActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Holo.NoActionBar" >
         </activity>
@@ -64,7 +63,7 @@
             android:value="53cf230656240bb3f806d3d6" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="android_market" />
+            android:value="m360" />
 
         <activity
             android:name=".yxapi.YXEntryActivity"
