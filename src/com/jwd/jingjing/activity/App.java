@@ -17,13 +17,11 @@ import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
 /**
- * @INFO
- * 谁是静静是集，美女图片、内涵图片，内涵段子、无节操图片于一体的幽默类网站，在这里可以看到极具搞笑的东西。
- * “美女诱惑”让你瞬间爆棚， 特含“醉图”极度搞笑，锻炼腹肌力量，激发排泄效率。 无节操、无下限、爆笑内容，有效清理体内毒素，帮助维护高端笑点，适合全家每天使用。
- * 纯天然无污染优质原创内容，丰富槽点，给你最刺激的感官享受! 富含不明糟糕物，使用后精神柔滑不干燥，倍感舒爽。
-
-	@TAG
-
+ * @INFO 谁是静静是集，美女图片、内涵图片，内涵段子、无节操图片于一体的幽默类网站，在这里可以看到极具搞笑的东西。 “美女诱惑”让你瞬间爆棚，
+ *       特含“醉图”极度搞笑，锻炼腹肌力量，激发排泄效率。 无节操、无下限、爆笑内容，有效清理体内毒素，帮助维护高端笑点，适合全家每天使用。
+ *       纯天然无污染优质原创内容，丰富槽点，给你最刺激的感官享受! 富含不明糟糕物，使用后精神柔滑不干燥，倍感舒爽。
+ * @TAG
+ * 
  * @author jiangweidong
  * 
  */
@@ -78,10 +76,10 @@ public class App extends Application {
 				.cacheInMemory(true)// 设置下载的图片是否缓存在内存中
 				.considerExifParams(true) // 是否考虑JPEG图像EXIF参数（旋转，翻转）
 				.imageScaleType(ImageScaleType.EXACTLY_STRETCHED)// 设置图片以如何的编码方式显示
-				.bitmapConfig(Bitmap.Config.RGB_565)// 设置图片的解码类型//
+				.bitmapConfig(Bitmap.Config.ARGB_8888)// 设置图片的解码类型//
 				.resetViewBeforeLoading(true)// 设置图片在下载前是否重置，复位
-				.displayer(new RoundedBitmapDisplayer(20))// 是否设置为圆角，弧度为多少
-				.displayer(new FadeInBitmapDisplayer(1200))// 是否图片加载好后渐入的动画时间
+				// .displayer(new RoundedBitmapDisplayer(20))// 是否设置为圆角，弧度为多少
+				// .displayer(new FadeInBitmapDisplayer(1000))// 是否图片加载好后渐入的动画时间
 				.build();// 构建完成
 	}
 
